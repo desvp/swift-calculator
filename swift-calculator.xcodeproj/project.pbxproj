@@ -12,6 +12,7 @@
 		93437F6F1C7D77DD00D0F905 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93437F6D1C7D77DD00D0F905 /* Main.storyboard */; };
 		93437F711C7D77DD00D0F905 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93437F701C7D77DD00D0F905 /* Assets.xcassets */; };
 		93437F741C7D77DD00D0F905 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93437F721C7D77DD00D0F905 /* LaunchScreen.storyboard */; };
+		93437F7C1C7DCEA400D0F905 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93437F7B1C7DCEA400D0F905 /* CollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		93437F701C7D77DD00D0F905 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93437F731C7D77DD00D0F905 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93437F751C7D77DD00D0F905 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93437F7B1C7DCEA400D0F905 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				93437F691C7D77DD00D0F905 /* AppDelegate.swift */,
+				93437F7B1C7DCEA400D0F905 /* CollectionViewCell.swift */,
 				93437F6B1C7D77DD00D0F905 /* ViewController.swift */,
 				93437F6D1C7D77DD00D0F905 /* Main.storyboard */,
 				93437F701C7D77DD00D0F905 /* Assets.xcassets */,
@@ -138,6 +141,7 @@
 			files = (
 				93437F6C1C7D77DD00D0F905 /* ViewController.swift in Sources */,
 				93437F6A1C7D77DD00D0F905 /* AppDelegate.swift in Sources */,
+				93437F7C1C7DCEA400D0F905 /* CollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +291,7 @@
 				93437F7A1C7D77DD00D0F905 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
