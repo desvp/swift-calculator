@@ -29,9 +29,7 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
         // let _margin_top = CGFloat(20.0) + _view_height * 0.325
         let marginTop = viewHeight - (cellHeight * 5 + 4)
 
-        createNumberView(marginTop, width: cellWidth, height: cellHeight)
-        createOperatorView(marginTop, width: cellWidth, height: cellHeight)
-
+        createInputView(marginTop, width: cellWidth, height: cellHeight)
     }
 
 
@@ -40,9 +38,9 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
         // Dispose of any resources that can be recreated.
     }
 
-    func createNumberView(top: CGFloat, width: CGFloat, height: CGFloat) {
+    func createInputView(top: CGFloat, width: CGFloat, height: CGFloat) {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: top, left: 0, bottom: 0, right: width+1.0)
+        layout.sectionInset = UIEdgeInsets(top: top, left: 0, bottom: 0, right: 0)
         layout.itemSize = CGSize(width: width, height: height)
         layout.minimumInteritemSpacing = 1.0
         layout.minimumLineSpacing = 1.0
@@ -59,7 +57,7 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
     }
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 15
+        return 20
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -71,20 +69,6 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
         //cell.imageView?.image = UIImage(named: "background-operator")
 
         return cell
-    }
-
-    func createOperatorView(top: CGFloat, width: CGFloat, height: CGFloat) {
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: top, left: 0, bottom: 0, right: width+1.0)
-        layout.itemSize = CGSize(width: width, height: height)
-        layout.minimumInteritemSpacing = 1.0
-        layout.minimumLineSpacing = 1.0
-        collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-        collectionView!.dataSource = self
-        collectionView!.delegate = self
-        collectionView!.registerClass(CollectionViewCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
-        collectionView!.backgroundColor = UIColor.blueColor()
-        self.view.addSubview(collectionView!)
     }
 
     /*
