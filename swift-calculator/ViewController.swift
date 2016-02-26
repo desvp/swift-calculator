@@ -71,58 +71,5 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
         return cell
     }
 
-    /*
-    func create_buttons() {
-
-        let _width = self.view.frame.width
-        let _height = self.view.frame.height
-        let _margin_top = CGFloat(20.0) + _height * 0.325
-
-        let width = _width / 4
-        let height = _height * 0.625 / 5
-
-        var x:CGFloat
-        var y:CGFloat
-        var z:CGFloat
-
-        x = CGFloat(0.0)
-        y = _margin_top
-
-        add_button(x, y:y, width:width, height:height, title:"1")
-
-        z = x + width + 2
-        add_button(z, y:y, width:width, height:height, title:"2")
-
-        z = x + (width + 2) * 2
-        add_button(z, y:y, width:width, height:height, title:"3")
-
-        z = x + (width + 2) * 3
-        add_button(z, y:y, width:width, height:height, title:"4")
-
-        y = _margin_top + height + 2
-
-        add_button(x, y:y, width:width, height:height, title:"5")
-
-        z = x + width + 2
-        add_button(z, y:y, width:width, height:height, title:"6")
-
-        z = x + (width + 2) * 2
-        add_button(z, y:y, width:width, height:height, title:"7")
-
-        z = x + (width + 2) * 3
-        add_button(z, y:y, width:width, height:height, title:"8")
-
-    }
-
-    func add_button(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat, title: String) {
-        let button = UIButton(type: UIButtonType.System)
-        button.frame = CGRectMake(x, y, width, height)
-        button.backgroundColor = UIColor.blackColor()
-        button.setTitle(title, forState: UIControlState.Normal)
-        // button.addTarget(self, action: "buttonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
-        self.view.addSubview(button)
-    }
-    */
-
 }
 
