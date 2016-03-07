@@ -11,44 +11,83 @@ import UIKit
 
 class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
 
-    @IBOutlet var collectionView: UICollectionView?
+    var collectionView: UICollectionView?
+    let items = [
+        0: ["AC", "operator"],
+        1: ["±", "operator"],
+        2: ["%", "operator"],
+        3: ["÷", "operator"],
+        4: ["7", "digit"],
+        5: ["8", "digit"],
+        6: ["9", "digit"],
+        7: ["×", "operator"],
+        8: ["4", "digit"],
+        9: ["5", "digit"],
+        10: ["6", "digit"],
+        11: ["-", "operator"],
+        12: ["1", "digit"],
+        13: ["2", "digit"],
+        14: ["3", "digit"],
+        15: ["+", "operator"],
+        16: ["0", "digit"],
+        17: [".", "digit"],
+        18: ["=", "operator"]
+    ]
+    var cellWidth: CGFloat = 0.0
+    var cellHeight: CGFloat = 0.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+
         // 延长 1 秒
         NSThread.sleepForTimeInterval(1.0)
 
-        // create_buttons()
-
-        let viewWidth = self.view.frame.width
-        let viewHeight = self.view.frame.height
-        let cellWidth = (viewWidth - 3.0) / 4
-        let cellHeight = (viewHeight * 0.625 - 4.0) / 5
-
-        // let _margin_top = CGFloat(20.0) + _view_height * 0.325
-        let marginTop = viewHeight - (cellHeight * 5 + 4)
-
-        createInputView(marginTop, width: cellWidth, height: cellHeight)
+        initLayout()
     }
 
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
-    func createInputView(top: CGFloat, width: CGFloat, height: CGFloat) {
+    func initLayout() {
+        var adjustment = CGFloat(0.0)
+        /*
+        iPhone 6 Plus and 6S Plus, width is 414.0, cell width: 103.0
+        iPhone 6 and 6S, width is 375.0, cell width: 93.5
+        iPhone 5 and 5S, width is 320.0, cell width: 80.0
+        */
+        if self.view.frame.width == 414 {
+            adjustment = 2.0
+        } else if self.view.frame.width == 375 {
+            adjustment = 1.0
+        } else {
+            adjustment = 0.0
+        }
+
+        cellWidth = (self.view.frame.width - adjustment) / 4.0
+        let left = adjustment / 2
+        let right = adjustment / 2
+
+        cellHeight = ceil((self.view.frame.height * 0.5) / 5.0)
+        let top = self.view.frame.height - (cellHeight * 5)
+
+        createInputView(top, left: left, right: right, width: cellWidth, height: cellHeight)
+    }
+
+    func createInputView(top: CGFloat, left: CGFloat, right: CGFloat, width: CGFloat, height: CGFloat) {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: top, left: 0, bottom: 0, right: 0)
-        layout.itemSize = CGSize(width: width, height: height)
-        layout.minimumInteritemSpacing = 1.0
-        layout.minimumLineSpacing = 1.0
+        layout.sectionInset = UIEdgeInsets(top: top, left: left, bottom: 0, right: right)
         collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         collectionView!.dataSource = self
         collectionView!.delegate = self
         collectionView!.registerClass(CollectionViewCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
-        collectionView!.backgroundColor = UIColor.grayColor()
+        collectionView!.backgroundColor = UIColor(RGB: 0x333333)
         self.view.addSubview(collectionView!)
     }
 
@@ -57,19 +96,52 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
     }
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return self.items.count
+    }
+
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 0.0
+    }
+
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 0.0
+    }
+
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        var width: CGFloat = cellWidth
+
+        if self.items[indexPath.item]![0] == "0" {
+            width = cellWidth * 2
+        }
+
+        return CGSizeMake(width, cellHeight)
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewCell", forIndexPath: indexPath) as! CollectionViewCell
-        cell.backgroundColor = UIColor.blueColor()
-        // print(indexPath)
-        cell.textLabel?.text = "\(indexPath.row+1)"
-        cell.imageView?.image = UIImage(named: "background-number")
-        //cell.imageView?.image = UIImage(named: "background-operator")
+        var cursor = self.items[indexPath.item]
+
+        cell.selectedBackgroundView = UIView()
+
+        cell.labelView?.text = "\(String(cursor![0]))"
+        if cursor?[1] == "digit" {
+            cell.backgroundColor = UIColor(RGB: 0xD4D5D7)
+            cell.labelView?.textColor = UIColor(RGB: 0x000000)
+            cell.selectedBackgroundView?.backgroundColor = UIColor(RGB: 0xB8B9BC)
+            // cell.selectedBackgroundView?.backgroundColor = UIColor(RGB: 0xB2B3B5)
+        } else {
+            cell.backgroundColor = UIColor(RGB: 0xF98911)
+            cell.labelView?.textColor = UIColor(RGB: 0xFFFFFF)
+            cell.selectedBackgroundView?.backgroundColor = UIColor(RGB: 0xE07F10)
+        }
 
         return cell
     }
 
-}
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let cursor = self.items[indexPath.item]
+        print("\(cursor![0])", terminator: " ")
+        collectionView.deselectItemAtIndexPath(indexPath, animated: true)
+    }
 
+}
