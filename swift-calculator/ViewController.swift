@@ -11,7 +11,10 @@ import UIKit
 
 class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
 
-    var collectionView: UICollectionView?
+    var InputView: UICollectionView?
+    var AnswerView: UILabel!
+    var AlertView: UILabel!
+
     let items = [
         0: ["AC", "operator"],
         1: ["±", "operator"],
@@ -33,8 +36,8 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
         17: [".", "digit"],
         18: ["=", "operator"]
     ]
-    var cellWidth: CGFloat = 0.0
-    var cellHeight: CGFloat = 0.0
+    var inputCellWidth: CGFloat = 0.0
+    var inputCellHeight: CGFloat = 0.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +59,8 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
     }
 
     func initLayout() {
+        self.view.backgroundColor = UIColor(RGB: 0xFF0000)
+
         /*
         iPhone 6 Plus and 6S Plus, frame width: 414.0, cell width: 103.0
         iPhone 6 and 6S,           frame width: 375.0, cell width: 93.5
@@ -72,24 +77,57 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
             }
         }
 
-        cellWidth = (self.view.frame.width - adjustment) / 4.0
+        inputCellWidth = (self.view.frame.width - adjustment) / 4.0
+        inputCellHeight = ceil((self.view.frame.height * 0.5) / 5.0)
+
         let left = adjustment / 2
         let right = adjustment / 2
-        cellHeight = ceil((self.view.frame.height * 0.5) / 5.0)
-        let top = self.view.frame.height - (cellHeight * 5)
+        let offset = UIEdgeInsets(top: 0, left: left, bottom: 0, right: right)
 
-        createInputView(top, left: left, right: right, width: cellWidth, height: cellHeight)
+        let inputViewHeight = inputCellHeight * 5
+        let inputViewMarginTop = self.view.frame.height - inputViewHeight
+        createInputView(position: CGRect(origin: CGPoint(x: 0, y: inputViewMarginTop), size: CGSize(width: self.view.frame.width, height: inputViewHeight)),
+            offset: offset)
+
+        let answerViewHeight = CGFloat(80)
+        let answerViewMarginTop = inputViewMarginTop - answerViewHeight
+        createAnswerView(position: CGRect(origin: CGPoint(x: 0, y: answerViewMarginTop), size: CGSize(width: self.view.frame.width, height: answerViewHeight)), offset: offset)
+
+        let alertViewHeight = CGFloat(40)
+        let alertViewMarginTop = inputViewMarginTop - answerViewHeight - alertViewHeight
+        createAlertView(position: CGRect(origin: CGPoint(x: 0, y: alertViewMarginTop), size: CGSize(width: self.view.frame.width, height: alertViewHeight)), offset: offset)
     }
 
-    func createInputView(top: CGFloat, left: CGFloat, right: CGFloat, width: CGFloat, height: CGFloat) {
+    func createAlertView(position position: CGRect, offset: UIEdgeInsets) {
+        AlertView = UILabelWithInset(frame: position)
+        AlertView.font = UIFont.systemFontOfSize(CGFloat(18), weight: UIFontWeightLight)
+        AlertView.textAlignment = .Right
+        AlertView.backgroundColor = UIColor(RGB: 0x999999)
+        AlertView.textColor = UIColor(RGB: 0xFFFFFF)
+        AlertView.text = ""
+        self.view.addSubview(AlertView)
+    }
+
+    func createAnswerView(position position: CGRect, offset: UIEdgeInsets) {
+        AnswerView = UILabelWithInset(frame: position)
+        AnswerView.font = UIFont.systemFontOfSize(CGFloat(72), weight: UIFontWeightLight)
+        AnswerView.textAlignment = .Right
+        AnswerView.backgroundColor = UIColor(RGB: 0x333333)
+        AnswerView.textColor = UIColor(RGB: 0xFFFFFF)
+        AnswerView.text = "0"
+        AnswerView.adjustsFontSizeToFitWidth = true
+        self.view.addSubview(AnswerView)
+    }
+
+    func createInputView(position position: CGRect, offset: UIEdgeInsets) {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: top, left: left, bottom: 0, right: right)
-        collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-        collectionView!.dataSource = self
-        collectionView!.delegate = self
-        collectionView!.registerClass(CollectionViewCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
-        collectionView!.backgroundColor = UIColor(RGB: 0x333333)
-        self.view.addSubview(collectionView!)
+        layout.sectionInset = offset
+        InputView = UICollectionView(frame: position, collectionViewLayout: layout)
+        InputView!.dataSource = self
+        InputView!.delegate = self
+        InputView!.registerClass(CollectionViewCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
+        InputView!.backgroundColor = UIColor(RGB: 0x333333)
+        self.view.addSubview(InputView!)
     }
 
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -109,13 +147,13 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
     }
 
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        var width: CGFloat = cellWidth
+        var width: CGFloat = inputCellWidth
 
         if self.items[indexPath.item]![0] == "0" {
-            width = cellWidth * 2
+            width = inputCellWidth * 2
         }
 
-        return CGSizeMake(width, cellHeight)
+        return CGSizeMake(width, inputCellHeight)
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -141,9 +179,26 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
     }
 
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let cursor = self.items[indexPath.item]
-        print("\(cursor![0])", terminator: " ")
         collectionView.deselectItemAtIndexPath(indexPath, animated: true)
+
+        let cursor = self.items[indexPath.item]
+        let text = cursor![0]
+        // print("\(text)", terminator: " ")
+
+        if text == "AC" {
+            AlertView.text = ""
+            AnswerView.text = "0"
+            return
+        }
+        if AnswerView.text?.characters.count >= 18 {
+            AlertView.text = "Error"
+            return
+        }
+        if AnswerView.text == "0" {
+            AnswerView.text = text
+        } else {
+            AnswerView.text = AnswerView.text! + text
+        }
     }
 
 }
