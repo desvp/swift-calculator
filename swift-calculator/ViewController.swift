@@ -131,6 +131,7 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
             }
         }
         cell.backgroundColor = nodeColors.background
+        cell.selectedBackgroundView = UIView()
         cell.selectedBackgroundView?.backgroundColor = nodeColors.selectedBackground
         cell.labelView?.textColor = nodeColors.text
 
