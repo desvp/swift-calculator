@@ -40,8 +40,8 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-        // 延长 1 秒
-        NSThread.sleepForTimeInterval(1.0)
+        // LaunchImage 延时
+        // NSThread.sleepForTimeInterval(1.0)
 
         initLayout()
     }
