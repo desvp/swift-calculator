@@ -24,7 +24,7 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
         8: ["4", "digit"],
         9: ["5", "digit"],
         10: ["6", "digit"],
-        11: ["-", "operator"],
+        11: ["−", "operator"],
         12: ["1", "digit"],
         13: ["2", "digit"],
         14: ["3", "digit"],
