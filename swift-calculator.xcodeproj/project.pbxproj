@@ -15,7 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		93437F661C7D77DD00D0F905 /* swift-calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swift-calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		93437F661C7D77DD00D0F905 /* Calculator!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Calculator!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93437F691C7D77DD00D0F905 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93437F6B1C7D77DD00D0F905 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		93437F701C7D77DD00D0F905 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -46,7 +46,7 @@
 		93437F671C7D77DD00D0F905 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				93437F661C7D77DD00D0F905 /* swift-calculator.app */,
+				93437F661C7D77DD00D0F905 /* Calculator!.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -89,7 +89,7 @@
 			);
 			name = "swift-calculator";
 			productName = "swift-calculator";
-			productReference = 93437F661C7D77DD00D0F905 /* swift-calculator.app */;
+			productReference = 93437F661C7D77DD00D0F905 /* Calculator!.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -241,7 +241,7 @@
 				INFOPLIST_FILE = "swift-calculator/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "desvp.com.swift-calculator";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Calculator!";
 			};
 			name = Debug;
 		};
@@ -253,7 +253,7 @@
 				INFOPLIST_FILE = "swift-calculator/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "desvp.com.swift-calculator";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Calculator;
 			};
 			name = Release;
 		};
