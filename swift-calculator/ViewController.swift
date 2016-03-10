@@ -56,24 +56,25 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
     }
 
     func initLayout() {
-        var adjustment = CGFloat(0.0)
         /*
-        iPhone 6 Plus and 6S Plus, width is 414.0, cell width: 103.0
-        iPhone 6 and 6S, width is 375.0, cell width: 93.5
-        iPhone 5 and 5S, width is 320.0, cell width: 80.0
+        iPhone 6 Plus and 6S Plus, frame width: 414.0, cell width: 103.0
+        iPhone 6 and 6S,           frame width: 375.0, cell width: 93.5
+        iPhone 5 and 5S,           frame width: 320.0, cell width: 80.0
         */
-        if self.view.frame.width == 414 {
-            adjustment = 2.0
-        } else if self.view.frame.width == 375 {
-            adjustment = 1.0
-        } else {
-            adjustment = 0.0
+        var adjustment: CGFloat {
+            switch(self.view.frame.width) {
+            case 414:
+                return 2.0
+            case 375:
+                return 1.0
+            default:
+                return 0.0
+            }
         }
 
         cellWidth = (self.view.frame.width - adjustment) / 4.0
         let left = adjustment / 2
         let right = adjustment / 2
-
         cellHeight = ceil((self.view.frame.height * 0.5) / 5.0)
         let top = self.view.frame.height - (cellHeight * 5)
 
