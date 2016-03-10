@@ -122,19 +122,19 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewCell", forIndexPath: indexPath) as! CollectionViewCell
         var cursor = self.items[indexPath.item]
 
-        cell.selectedBackgroundView = UIView()
+        var nodeColors: (text:UIColor, background:UIColor, selectedBackground:UIColor) {
+            switch(cursor?[1]) {
+            case "digit"?:
+                return (text:UIColor(RGB: 0x000000), background:UIColor(RGB: 0xD4D5D7), selectedBackground:UIColor(RGB: 0xB8B9BC))
+            default:
+                return (text:UIColor(RGB: 0xFFFFFF), background:UIColor(RGB: 0xF98911), selectedBackground:UIColor(RGB: 0xE07F10))
+            }
+        }
+        cell.backgroundColor = nodeColors.background
+        cell.selectedBackgroundView?.backgroundColor = nodeColors.selectedBackground
+        cell.labelView?.textColor = nodeColors.text
 
         cell.labelView?.text = "\(String(cursor![0]))"
-        if cursor?[1] == "digit" {
-            cell.backgroundColor = UIColor(RGB: 0xD4D5D7)
-            cell.labelView?.textColor = UIColor(RGB: 0x000000)
-            cell.selectedBackgroundView?.backgroundColor = UIColor(RGB: 0xB8B9BC)
-            // cell.selectedBackgroundView?.backgroundColor = UIColor(RGB: 0xB2B3B5)
-        } else {
-            cell.backgroundColor = UIColor(RGB: 0xF98911)
-            cell.labelView?.textColor = UIColor(RGB: 0xFFFFFF)
-            cell.selectedBackgroundView?.backgroundColor = UIColor(RGB: 0xE07F10)
-        }
 
         return cell
     }
