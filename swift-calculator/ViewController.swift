@@ -103,7 +103,7 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
         AlertView.font = UIFont.systemFontOfSize(CGFloat(18), weight: UIFontWeightLight)
         AlertView.textAlignment = .Right
         AlertView.backgroundColor = UIColor(RGB: 0x999999)
-        AlertView.textColor = UIColor(RGB: 0xFFFFFF)
+        AlertView.textColor = UIColor(RGB: 0xFF0000)
         AlertView.text = ""
         self.view.addSubview(AlertView)
     }
