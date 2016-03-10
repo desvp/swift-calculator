@@ -26,11 +26,6 @@ class CollectionViewCell: UICollectionViewCell {
         labelView.layer.borderColor = UIColor(RGB: 0x333333).CGColor
         labelView.layer.borderWidth = 0.5
 
-//        labelView.layer.shadowColor = UIColor.darkGrayColor().CGColor
-//        labelView.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
-//        labelView.layer.shadowOpacity = 0.8
-//        labelView.layer.shadowRadius = 2
-
         contentView.addSubview(labelView)
     }
 }
