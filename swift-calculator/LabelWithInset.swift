@@ -21,6 +21,10 @@ class LabelWithInset: UILabel {
         super.init(coder: aDecoder)!
     }
 
+    override func drawTextInRect(rect: CGRect) {
+        super.drawTextInRect(UIEdgeInsetsInsetRect(rect, insets))
+    }
+
     func resetInsets(insets: UIEdgeInsets) {
         self.insets = insets
     }
@@ -28,9 +32,4 @@ class LabelWithInset: UILabel {
     func resetInsets(top top: Int, left: Int, bottom: Int, right: Int) {
         self.insets = UIEdgeInsets(top: CGFloat(top), left: CGFloat(left), bottom: CGFloat(bottom), right: CGFloat(right))
     }
-
-    override func drawTextInRect(rect: CGRect) {
-        super.drawTextInRect(UIEdgeInsetsInsetRect(rect, insets))
-    }
-
 }
