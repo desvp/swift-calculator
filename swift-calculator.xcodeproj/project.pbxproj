@@ -58,8 +58,8 @@
 			children = (
 				93437F691C7D77DD00D0F905 /* AppDelegate.swift */,
 				93437F7B1C7DCEA400D0F905 /* CollectionViewCell.swift */,
-				93437F6B1C7D77DD00D0F905 /* ViewController.swift */,
 				937758C91C91832B00607EBE /* LabelWithInset.swift */,
+				93437F6B1C7D77DD00D0F905 /* ViewController.swift */,
 				93437F7D1C8006CE00D0F905 /* Extensions */,
 				93437F701C7D77DD00D0F905 /* Assets.xcassets */,
 				93437F751C7D77DD00D0F905 /* Info.plist */,
