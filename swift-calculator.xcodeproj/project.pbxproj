@@ -12,7 +12,7 @@
 		93437F711C7D77DD00D0F905 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93437F701C7D77DD00D0F905 /* Assets.xcassets */; };
 		93437F7C1C7DCEA400D0F905 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93437F7B1C7DCEA400D0F905 /* CollectionViewCell.swift */; };
 		93437F7F1C8006F400D0F905 /* ExtensionUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93437F7E1C8006F400D0F905 /* ExtensionUIColor.swift */; };
-		937758CA1C91832B00607EBE /* ExtensionUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937758C91C91832B00607EBE /* ExtensionUILabel.swift */; };
+		937758CA1C91832B00607EBE /* LabelWithInset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937758C91C91832B00607EBE /* LabelWithInset.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +23,7 @@
 		93437F751C7D77DD00D0F905 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93437F7B1C7DCEA400D0F905 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		93437F7E1C8006F400D0F905 /* ExtensionUIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionUIColor.swift; sourceTree = "<group>"; };
-		937758C91C91832B00607EBE /* ExtensionUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionUILabel.swift; sourceTree = "<group>"; };
+		937758C91C91832B00607EBE /* LabelWithInset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelWithInset.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +59,7 @@
 				93437F691C7D77DD00D0F905 /* AppDelegate.swift */,
 				93437F7B1C7DCEA400D0F905 /* CollectionViewCell.swift */,
 				93437F6B1C7D77DD00D0F905 /* ViewController.swift */,
+				937758C91C91832B00607EBE /* LabelWithInset.swift */,
 				93437F7D1C8006CE00D0F905 /* Extensions */,
 				93437F701C7D77DD00D0F905 /* Assets.xcassets */,
 				93437F751C7D77DD00D0F905 /* Info.plist */,
@@ -70,7 +71,6 @@
 			isa = PBXGroup;
 			children = (
 				93437F7E1C8006F400D0F905 /* ExtensionUIColor.swift */,
-				937758C91C91832B00607EBE /* ExtensionUILabel.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -147,7 +147,7 @@
 			files = (
 				93437F6C1C7D77DD00D0F905 /* ViewController.swift in Sources */,
 				93437F6A1C7D77DD00D0F905 /* AppDelegate.swift in Sources */,
-				937758CA1C91832B00607EBE /* ExtensionUILabel.swift in Sources */,
+				937758CA1C91832B00607EBE /* LabelWithInset.swift in Sources */,
 				93437F7C1C7DCEA400D0F905 /* CollectionViewCell.swift in Sources */,
 				93437F7F1C8006F400D0F905 /* ExtensionUIColor.swift in Sources */,
 			);

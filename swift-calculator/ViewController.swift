@@ -12,8 +12,8 @@ import UIKit
 class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
 
     var InputView: UICollectionView?
-    var AnswerView: UILabel!
-    var AlertView: UILabel!
+    var AnswerView: LabelWithInset!
+    var AlertView: LabelWithInset!
 
     let items = [
         0: ["AC", "operator"],
@@ -93,23 +93,23 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
         let answerViewMarginTop = inputViewMarginTop - answerViewHeight
         createAnswerView(position: CGRect(origin: CGPoint(x: 0, y: answerViewMarginTop), size: CGSize(width: self.view.frame.width, height: answerViewHeight)), offset: offset)
 
-        let alertViewHeight = CGFloat(40)
+        let alertViewHeight = CGFloat(32)
         let alertViewMarginTop = inputViewMarginTop - answerViewHeight - alertViewHeight
         createAlertView(position: CGRect(origin: CGPoint(x: 0, y: alertViewMarginTop), size: CGSize(width: self.view.frame.width, height: alertViewHeight)), offset: offset)
     }
 
     func createAlertView(position position: CGRect, offset: UIEdgeInsets) {
-        AlertView = UILabelWithInset(frame: position)
-        AlertView.font = UIFont.systemFontOfSize(CGFloat(18), weight: UIFontWeightLight)
+        AlertView = LabelWithInset(frame: position)
+        AlertView.font = UIFont.systemFontOfSize(CGFloat(16), weight: UIFontWeightLight)
         AlertView.textAlignment = .Right
-        AlertView.backgroundColor = UIColor(RGB: 0x999999)
+        AlertView.backgroundColor = UIColor(RGB: 0x333333)
         AlertView.textColor = UIColor(RGB: 0xFF0000)
         AlertView.text = ""
         self.view.addSubview(AlertView)
     }
 
     func createAnswerView(position position: CGRect, offset: UIEdgeInsets) {
-        AnswerView = UILabelWithInset(frame: position)
+        AnswerView = LabelWithInset(frame: position)
         AnswerView.font = UIFont.systemFontOfSize(CGFloat(72), weight: UIFontWeightLight)
         AnswerView.textAlignment = .Right
         AnswerView.backgroundColor = UIColor(RGB: 0x333333)
